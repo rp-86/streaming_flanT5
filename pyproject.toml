@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "streaming-flant5"
+version = "0.1.0"
+description = ""
+authors = ["y"]
+readme = "README.md"
+packages = [{include = "streaming_flant5"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+accelerate = "0.17.1"
+transformers = "4.27.2"
+flask = "^2.3.2"
+flask-socketio = "^5.3.4"
+poethepoet = "^0.20.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+requirements = {shell="scripts/export_requirements.sh"}
+build-image = {shell="scripts/docker-build.sh"}
+run-image = {shell="scripts/docker-run.sh"}
